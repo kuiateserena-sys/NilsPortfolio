@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio — OTELE Nils Serge, étudiant en génie logiciel." />
+  <title>OTELE Nils Serge — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="noise-overlay" aria-hidden="true"></div>
+  <div class="mesh-overlay" aria-hidden="true"></div>
+  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
+
+  <div id="page-loader" class="page-loader" role="status" aria-live="polite" aria-busy="true">
+    <div class="page-loader__ring"></div>
+    <p class="page-loader__text" data-i18n="loader.text">Chargement</p>
+  </div>
+
+  <div id="cursor-dot" class="cursor-dot" aria-hidden="true"></div>
+  <div id="cursor-ring" class="cursor-ring" aria-hidden="true"></div>
+
+  <div class="bg-gradient" aria-hidden="true"></div>
+  <canvas id="particles-canvas" class="particles-canvas" aria-hidden="true"></canvas>
+  <div class="parallax-blob parallax-blob--1" aria-hidden="true"></div>
+  <div class="parallax-blob parallax-blob--2" aria-hidden="true"></div>
+  <div class="parallax-blob parallax-blob--3" aria-hidden="true"></div>
+  <div class="deco-orbit deco-orbit--1" aria-hidden="true"></div>
+  <div class="deco-orbit deco-orbit--2" aria-hidden="true"></div>
+
+  <header class="site-header" id="top">
+    <nav class="nav container" aria-label="Navigation principale">
+      <a href="#top" class="nav__brand"><span class="nav__brand-glow">N.O.</span></a>
+      <button type="button" class="nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Menu">
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+      </button>
+      <ul class="nav__menu" id="nav-menu">
+        <li><a href="#hero" class="nav__link" data-i18n="nav.home">Accueil</a></li>
+        <li><a href="#about" class="nav__link" data-i18n="nav.about">À propos</a></li>
+        <li><a href="#skills" class="nav__link" data-i18n="nav.skills">Compétences</a></li>
+        <li><a href="#projects" class="nav__link" data-i18n="nav.projects">Projets</a></li>
+        <li><a href="#services" class="nav__link" data-i18n="nav.services">Services</a></li>
+        <li><a href="#contact" class="nav__link" data-i18n="nav.contact">Contact</a></li>
+        <li><a href="#hobbies" class="nav__link" data-i18n="nav.hobbies">Passions</a></li>
+        <li class="nav__lang">
+          <button type="button" class="lang-switch" id="lang-fr" data-lang="fr" aria-pressed="true">FR</button>
+          <span class="lang-switch__sep">|</span>
+          <button type="button" class="lang-switch" id="lang-en" data-lang="en" aria-pressed="false">EN</button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero section section--hero" id="hero" aria-labelledby="hero-title">
+      <div class="container hero__grid">
+        <div class="hero__content reveal">
+          <div class="hero__badges">
+            <span class="hero__pill" data-i18n="hero.badge1">UI futuriste</span>
+            <span class="hero__pill hero__pill--accent" data-i18n="hero.badge2">Front-end</span>
+            <span class="hero__pill" data-i18n="hero.badge3">Créatif</span>
+          </div>
+          <p class="hero__eyebrow" data-i18n="hero.eyebrow">Étudiant en Génie Logiciel</p>
+          <h1 id="hero-title" class="hero__title"><span class="hero__name">OTELE Nils Serge</span></h1>
+          <p class="hero__level" data-i18n="hero.level">Niveau 1 — IUGET</p>
+          <p class="hero__tagline">
+            <span class="hero__tagline-static sr-only" data-i18n="hero.taglineFallback">Accroche professionnelle.</span>
+            <span id="typed-text" class="hero__typed" aria-hidden="true"></span><span class="hero__typed-cursor" aria-hidden="true"></span>
+          </p>
+          <div class="hero__stats">
+            <div class="hero__stat glass glass--tight">
+              <span class="hero__stat-value">8+</span>
+              <span class="hero__stat-label" data-i18n="hero.stat1">Projets</span>
+            </div>
+            <div class="hero__stat glass glass--tight">
+              <span class="hero__stat-value">5</span>
+              <span class="hero__stat-label" data-i18n="hero.stat2">Services</span>
+            </div>
+            <div class="hero__stat glass glass--tight">
+              <span class="hero__stat-value hero__stat-value--sm" data-i18n="hero.stat3val">Freelance</span>
+              <span class="hero__stat-label" data-i18n="hero.stat3">Mode</span>
+            </div>
+          </div>
+          <div class="hero__actions">
+            <a href="#projects" class="btn btn--primary" data-i18n="hero.ctaProjects">Voir mes projets</a>
+            <a href="assets/cv.pdf" class="btn btn--secondary" download data-i18n="hero.ctaCv">Télécharger CV</a>
+            <a href="#contact" class="btn btn--ghost" data-i18n="hero.ctaContact">Me contacter</a>
+          </div>
+        </div>
+        <div class="hero__visual reveal reveal--delay">
+          <div class="hero__orbit" aria-hidden="true"></div>
+          <div class="hero__corner hero__corner--tl" aria-hidden="true"></div>
+          <div class="hero__corner hero__corner--br" aria-hidden="true"></div>
+          <div class="hero__photo-frame">
+            <div class="hero__photo-shine" aria-hidden="true"></div>
+            <img id="hero-photo" src="photo.jpeg" alt="Portrait de OTELE Nils Serge" class="hero__photo" width="400" height="400" fetchpriority="high">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt about" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="section__kicker" data-i18n="about.kicker">Profil</p>
+          <h2 id="about-title" class="section__title" data-i18n="about.title">À propos</h2>
+          <p class="section__lead" data-i18n="about.lead">Une approche hybride.</p>
+        </header>
+        <div class="about__layout">
+          <div class="about__highlights">
+            <article class="about__mini glass reveal card-glow">
+              <span class="about__mini-icon" aria-hidden="true">◆</span>
+              <h3 class="about__mini-title" data-i18n="about.h1">Analyse</h3>
+              <p class="about__mini-desc" data-i18n="about.h1d">Découpage clair des problèmes.</p>
+            </article>
+            <article class="about__mini glass reveal card-glow">
+              <span class="about__mini-icon" aria-hidden="true">◇</span>
+              <h3 class="about__mini-title" data-i18n="about.h2">Création</h3>
+              <p class="about__mini-desc" data-i18n="about.h2d">Interfaces engageantes.</p>
+            </article>
+            <article class="about__mini glass reveal card-glow">
+              <span class="about__mini-icon" aria-hidden="true">○</span>
+              <h3 class="about__mini-title" data-i18n="about.h3">Impact</h3>
+              <p class="about__mini-desc" data-i18n="about.h3d">Livrables utiles.</p>
+            </article>
+          </div>
+          <div class="about__card glass reveal card-glow">
+            <div class="about__card-accent" aria-hidden="true"></div>
+            <p data-i18n="about.p1">Paragraphe 1</p>
+            <p data-i18n="about.p2">Paragraphe 2</p>
+            <p data-i18n="about.p3">Paragraphe 3</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section skills" id="skills" aria-labelledby="skills-title">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="section__kicker" data-i18n="skills.kicker">Stack</p>
+          <h2 id="skills-title" class="section__title" data-i18n="skills.title">Compétences</h2>
+          <p class="section__lead" data-i18n="skills.lead">Barres animées — progression continue.</p>
+        </header>
+        <div class="skills__grid">
+          <article class="skill-card glass reveal card-glow"><span class="skill-card__corner" aria-hidden="true"></span><h3 class="skill-card__name">HTML</h3><div class="skill-card__bar" role="presentation"><span class="skill-card__fill" data-target="78"></span></div></article>
+          <article class="skill-card glass reveal card-glow"><span class="skill-card__corner" aria-hidden="true"></span><h3 class="skill-card__name">CSS</h3><div class="skill-card__bar" role="presentation"><span class="skill-card__fill" data-target="75"></span></div></article>
+          <article class="skill-card glass reveal card-glow"><span class="skill-card__corner" aria-hidden="true"></span><h3 class="skill-card__name">JavaScript</h3><div class="skill-card__bar" role="presentation"><span class="skill-card__fill" data-target="68"></span></div></article>
+          <article class="skill-card glass reveal card-glow"><span class="skill-card__corner" aria-hidden="true"></span><h3 class="skill-card__name">Word</h3><div class="skill-card__bar" role="presentation"><span class="skill-card__fill" data-target="82"></span></div></article>
+          <article class="skill-card glass reveal card-glow"><span class="skill-card__corner" aria-hidden="true"></span><h3 class="skill-card__name">Excel</h3><div class="skill-card__bar" role="presentation"><span class="skill-card__fill" data-target="76"></span></div></article>
+          <article class="skill-card glass reveal card-glow"><span class="skill-card__corner" aria-hidden="true"></span><h3 class="skill-card__name">Canva</h3><div class="skill-card__bar" role="presentation"><span class="skill-card__fill" data-target="88"></span></div></article>
+          <article class="skill-card glass reveal card-glow"><span class="skill-card__corner" aria-hidden="true"></span><h3 class="skill-card__name">CapCut</h3><div class="skill-card__bar" role="presentation"><span class="skill-card__fill" data-target="72"></span></div></article>
+          <article class="skill-card glass reveal card-glow"><span class="skill-card__corner" aria-hidden="true"></span><h3 class="skill-card__name">Photoshop</h3><div class="skill-card__bar" role="presentation"><span class="skill-card__fill" data-target="62"></span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt projects" id="projects" aria-labelledby="projects-title">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="section__kicker" data-i18n="projects.kicker">Sélection</p>
+          <h2 id="projects-title" class="section__title" data-i18n="projects.title">Projets</h2>
+          <p class="section__lead" data-i18n="projects.lead">Cliquez pour ouvrir la fiche.</p>
+        </header>
+        <div class="projects__grid">
+          <button type="button" class="project-card glass reveal card-glow" data-project-id="library"><span class="project-card__glow" aria-hidden="true"></span><span class="project-card__icon" aria-hidden="true">&#128218;</span><span class="project-card__name" data-i18n="projects.library.title">Mini bibliothèque</span><span class="project-card__arrow" aria-hidden="true">↗</span></button>
+          <button type="button" class="project-card glass reveal card-glow" data-project-id="currency"><span class="project-card__glow" aria-hidden="true"></span><span class="project-card__icon" aria-hidden="true">&#128176;</span><span class="project-card__name" data-i18n="projects.currency.title">Convertisseur de devises</span><span class="project-card__arrow" aria-hidden="true">↗</span></button>
+          <button type="button" class="project-card glass reveal card-glow" data-project-id="calculator"><span class="project-card__glow" aria-hidden="true"></span><span class="project-card__icon" aria-hidden="true">&#129518;</span><span class="project-card__name" data-i18n="projects.calculator.title">Mini calculatrice</span><span class="project-card__arrow" aria-hidden="true">↗</span></button>
+          <button type="button" class="project-card glass reveal card-glow" data-project-id="hotel"><span class="project-card__glow" aria-hidden="true"></span><span class="project-card__icon" aria-hidden="true">&#127976;</span><span class="project-card__name" data-i18n="projects.hotel.title">Landing page hôtel</span><span class="project-card__arrow" aria-hidden="true">↗</span></button>
+          <button type="button" class="project-card glass reveal card-glow" data-project-id="elearning"><span class="project-card__glow" aria-hidden="true"></span><span class="project-card__icon" aria-hidden="true">&#127891;</span><span class="project-card__name" data-i18n="projects.elearning.title">Mini site e-learning</span><span class="project-card__arrow" aria-hidden="true">↗</span></button>
+          <button type="button" class="project-card glass reveal card-glow" data-project-id="orbe"><span class="project-card__glow" aria-hidden="true"></span><span class="project-card__icon" aria-hidden="true">&#128196;</span><span class="project-card__name" data-i18n="projects.orbe.title">Carte de visite ORBE.FI</span><span class="project-card__arrow" aria-hidden="true">↗</span></button>
+          <button type="button" class="project-card glass reveal card-glow" data-project-id="flyers"><span class="project-card__glow" aria-hidden="true"></span><span class="project-card__icon" aria-hidden="true">&#128087;</span><span class="project-card__name" data-i18n="projects.flyers.title">Flyers hôtel Palais des Princesses</span><span class="project-card__arrow" aria-hidden="true">↗</span></button>
+          <button type="button" class="project-card glass reveal card-glow" data-project-id="videos"><span class="project-card__glow" aria-hidden="true"></span><span class="project-card__icon" aria-hidden="true">&#127909;</span><span class="project-card__name" data-i18n="projects.videos.title">Vidéos publicitaires</span><span class="project-card__arrow" aria-hidden="true">↗</span></button>
+         
+          <button type="button" class="project-card glass reveal card-glow" data-project-id="Cerificats"><span class="project-card__glow" aria-hidden="true"></span><span class="project-card__icon" aria-hidden="true">&#128220;</span> <a href="Mr.NILS cisco/" class="Cerificat">Voir Mes Cerificats</a></span><span class="project-card__arrow" aria-hidden="true">↗</span></button>
+          
+        </div>
+      </div>
+    </section>
+
+    <section class="section services" id="services" aria-labelledby="services-title">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="section__kicker" data-i18n="services.kicker">Offre</p>
+          <h2 id="services-title" class="section__title" data-i18n="Mes Réalisations">Mes Réalisations</h2>
+         
+        </header>
+        <div class="services__grid">
+          <article class="service-card glass reveal card-glow">
+            <div class="service-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 5a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V5z"/><path d="M8 9h8M8 13h6"/></svg></div>
+            <h3 data-i18n="services.web.title">Développement site web</h3>
+            <p data-i18n="services.web.desc">Sites vitrines et pages structurées.</p>
+            <button type="button" class="btn btn--ghost btn--small js-service-request" data-service-key="web" data-i18n="services.cta">Demander un service</button>
+          </article>
+    
+          <article class="service-card glass reveal card-glow">
+            <div class="service-card__icon" aria-hidden="true"><svg viewBox="0 0 10 10" fill="currentColor"><rect x="1" y="2" width="1" height="6"/><rect x="3" y="1" width="1" height="8"/><rect x="5" y="3" width="1" height="4"/><rect x="7" y="0" width="1" height="10"/><rect x="9" y="4" width="1" height="2"/></svg></div>
+            <h3 data-i18n="services.video.title">Montage vidéo</h3>
+            <p data-i18n="services.video.desc">Montage dynamique pour réseaux et pubs.</p>
+            <button type="button" class="btn btn--ghost btn--small js-service-request" data-service-key="video" data-i18n="services.cta">Demander un service</button>
+          </article>
+          <article class="service-card glass reveal card-glow">
+            <div class="service-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg></div>
+            <h3 data-i18n="services.miniapp.title">Mini applications web</h3>
+            <p data-i18n="services.miniapp.desc">Petits outils interactifs sur mesure.</p>
+            <button type="button" class="btn btn--ghost btn--small js-service-request" data-service-key="miniapp" data-i18n="services.cta">Demander un service</button>
+          </article>
+        </div>
+      </div>
+      
+    </section>
+
+    <section class="section section--alt contact" id="contact" aria-labelledby="contact-title">
+      <div class="container contact__wrap">
+        <header class="section__head reveal">
+          <p class="section__kicker" data-i18n="contact.kicker">Lien direct</p>
+          <h2 id="contact-title" class="section__title" data-i18n="contact.title">Contact</h2>
+          <p class="section__lead" data-i18n="contact.lead">Réponses rapides sur WhatsApp ou email.</p>
+        </header>
+        <div class="contact__grid">
+        <aside class="contact__cta glass card-glow reveal">
+          <div class="contact__cta-blob" aria-hidden="true"></div>
+          <h3 class="contact__cta-title" data-i18n="contact.ctaTitle">Un brief ?</h3>
+          <p class="contact__cta-text" data-i18n="contact.ctaText">Décrivez votre idée en quelques lignes — je vous réponds vite.</p>
+          <a href="mailto:nilsotele491@gmail.com" class="btn btn--primary" data-i18n="contact.ctaBtn">Écrire maintenant</a>
+        </aside>
+        <ul class="contact__list reveal">
+          <li><a href="mailto:nilsotele491@gmail.com" class="contact__link"><span data-i18n="contact.emailLabel">Email</span> — nilsotele491@gmail.com</a></li>
+          <li><a href="https://wa.me/237652757240" class="contact__link" target="_blank" rel="noopener noreferrer" data-i18n="contact.whatsapp">WhatsApp — +237 652 757 240</a></li>
+          <li><a id="contact-facebook" href="#" class="contact__link contact__link--placeholder" data-i18n="contact.facebook" aria-label="Facebook">Facebook</a></li>
+          <li><a id="contact-linkedin" href="#" class="contact__link contact__link--placeholder" data-i18n="contact.linkedin" aria-label="LinkedIn">LinkedIn</a></li>
+          <li>
+            <a id="contact-github-link" href="#" class="contact__link contact__link--github" target="_blank" rel="noopener noreferrer">
+              <span class="contact__github-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></span>
+              <span data-i18n="contact.github">GitHub</span>
+            </a>
+          </li>
+        </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section hobbies" id="hobbies" aria-labelledby="hobbies-title">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="section__kicker" data-i18n="hobbies.kicker">Hors écran</p>
+          <h2 id="hobbies-title" class="section__title" data-i18n="hobbies.title">Passions</h2>
+          <p class="section__lead" data-i18n="hobbies.lead">L’énergie au service de la créativité.</p>
+        </header>
+        <div class="hobbies__grid">
+          <div class="hobby-card glass reveal card-glow"><span class="hobby-card__ring" aria-hidden="true"></span><span class="hobby-card__icon" aria-hidden="true">&#9917;</span><span data-i18n="hobbies.football">Football</span></div>
+          <div class="hobby-card glass reveal card-glow"><span class="hobby-card__ring" aria-hidden="true"></span><span class="hobby-card__icon" aria-hidden="true">&#127936;</span><span data-i18n="hobbies.basketball">Basketball</span></div>
+          <div class="hobby-card glass reveal card-glow"><span class="hobby-card__ring" aria-hidden="true"></span><span class="hobby-card__icon" aria-hidden="true">&#128218;</span><span data-i18n="hobbies.reading">Lecture</span></div>
+          <div class="hobby-card glass reveal card-glow"><span class="hobby-card__ring" aria-hidden="true"></span><span class="hobby-card__icon" aria-hidden="true">&#9992;&#65039;</span><span data-i18n="hobbies.travel">Voyage</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="prefooter glass reveal" aria-hidden="true">
+      <div class="container prefooter__inner">
+        <span class="prefooter__line"></span>
+        <span class="prefooter__dots">···</span>
+        <span class="prefooter__line"></span>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="footer__brand"><span class="footer__glow">OTELE Nils Serge</span></p>
+      <p class="footer__rights" data-i18n="footer.rights">Tous droits réservés.</p>
+      <p class="footer__year"><span data-i18n="footer.yearLabel">Année</span> <span id="footer-year"></span></p>
+      <ul class="footer__social">
+        <li><a href="mailto:nilsotele491@gmail.com" class="footer__social-link" data-i18n="footer.emailShort" aria-label="Email">@</a></li>
+        <li><a href="https://wa.me/237652757240" class="footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">WA</a></li>
+        <li><a id="footer-facebook" href="#" class="footer__social-link footer__social-link--placeholder" aria-label="Facebook">f</a></li>
+        <li><a id="footer-linkedin" href="#" class="footer__social-link footer__social-link--placeholder" aria-label="LinkedIn">in</a></li>
+        <li><a id="footer-github-link" href="#" class="footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">GH</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <div id="modal-root" class="modal" hidden aria-hidden="true">
+    <div class="modal__backdrop" id="modal-backdrop" tabindex="-1"></div>
+    <div class="modal__dialog glass" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc">
+      <button type="button" class="modal__close" id="modal-close" aria-label="Fermer">&times;</button>
+      <div id="modal-panel-detail">
+        <h2 id="modal-title" class="modal__title">Projet</h2>
+        <p id="modal-desc" class="modal__desc"></p>
+        <button type="button" class="btn btn--primary" id="modal-btn-consult" data-i18n="modal.consult">Consulter le projet</button>
+      </div>
+      <div id="modal-panel-form" hidden>
+        <h2 id="modal-form-heading" class="modal__title" data-i18n="form.title">Demande</h2>
+        <p id="modal-form-desc" class="modal__hint" data-i18n="form.hint">Remplissez le formulaire.</p>
+        <form id="lead-form" class="lead-form" novalidate>
+          <label class="lead-form__field"><span data-i18n="form.name">Nom</span><input type="text" name="name" id="lead-name" required autocomplete="name" /></label>
+          <label class="lead-form__field"><span data-i18n="form.email">Email</span><input type="email" name="email" id="lead-email" required autocomplete="email" /></label>
+          <label class="lead-form__field"><span data-i18n="form.subject">Objet</span><input type="text" name="_subject" id="lead-subject" required /></label>
+          <label class="lead-form__field"><span data-i18n="form.message">Message</span><textarea name="message" id="lead-message" rows="4" required></textarea></label>
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="lead-form__hp" aria-hidden="true" />
+          <button type="submit" class="btn btn--primary btn--block" data-i18n="form.submit">Envoyer la demande</button>
+          <p id="form-status" class="lead-form__status" role="status" aria-live="polite"></p>
+        </form>
+        <button type="button" class="btn btn--ghost btn--small" id="form-back" data-i18n="form.back">Retour</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
